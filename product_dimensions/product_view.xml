@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="product_dimensions_normal_form_view">
+            <field name="name">product_dimensions_normal_form_view</field>
+            <field name="priority" eval="30"/>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <!-- <field name="volume" position="replace"/> -->
+                <field name="volume" position="replace">
+                
+                <!-- <xpath expr="//page[@string='Information']/group[2]" position="after" > -->
+                    <!-- <group colspan="2" col="2" groups="base.group_extended"> -->
+                        <!-- <separator string="Dimensiones" colspan="2"/> -->
+                        <field name="dimensional_uom"
+                                on_change="onchange_calculate_volume(length, high, width, dimensional_uom)"/>
+                        <field name="length" attrs="{'readonly':[('type','=','service')]}"
+                                on_change="onchange_calculate_volume(length, high, width, dimensional_uom)"/>
+                        <field name="high" attrs="{'readonly':[('type','=','service')]}"
+                                on_change="onchange_calculate_volume(length, high, width, dimensional_uom)"/>
+                        <field name="width" attrs="{'readonly':[('type','=','service')]}"
+                                on_change="onchange_calculate_volume(length, high, width, dimensional_uom)"/>
+                        <field name="volume" string="Volumen (m3)"/>
+                        <field name="uv_id" string="UV"/>
+                        <field name="lt" string="LT transmisión de la luz (%)"/>                        
+                        <field name="area" string="Area"/> 
+                        <field name="hard_coating" string="Hard Coating"/>
+                        <field name="cant_pallet" string="Cant/Pallet"/>                                                
+                        <field name="peso_pallet" string="Peso/Pallet"/>
+                        <field name="color_id" string="Color"/>
+                        <field name="familia_id" string="Familia"/>
+
+                    <!-- </group> -->
+                <!-- </xpath> -->
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
